@@ -5,15 +5,35 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#DDE2AA"
     tools:context=".MainActivity">
 
+    <Button
+        android:id="@+id/button"
+        android:layout_width="174dp"
+        android:layout_height="64dp"
+        android:text="pusing bngt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="269dp" />
+
     <TextView
+        android:id="@+id/textView"
+        android:layout_width="90dp"
+        android:layout_height="22dp"
+        android:background="#FBFBFB"
+        android:backgroundTint="#FFFFFF"
+        android:text="AAAAAAAAA"
+        tools:layout_editor_absoluteX="160dp"
+        tools:layout_editor_absoluteY="354dp" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="SUDAHKAH ANDA PUSING HARI INI?"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="398dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
