@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
             if (pilihan.equals("Reamur to Celcius")) {
                 rToc();
             }
-            if (pilihan.equals("Reamur to Celcius")) {
+            if (pilihan.equals("Reamur to Fahrenheit")) {
                 rTof();
             }
         }
