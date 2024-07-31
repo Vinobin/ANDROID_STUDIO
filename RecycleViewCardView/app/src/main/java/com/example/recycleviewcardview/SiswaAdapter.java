@@ -29,10 +29,10 @@ public class SiswaAdapter extends RecyclerView.Adapter<SiswaAdapter.ViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int i) {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         Siswa siswa = siswaList.get(i);
-        ViewHolder.tvNama.setText(siswa.getNama());
-        ViewHolder.tvAlamat.setText(siswa.getAlamat());
+        viewHolder.tvNama.setText(siswa.getNama());
+        viewHolder.tvAlamat.setText(siswa.getAlamat());
     }
 
     @Override
@@ -40,9 +40,9 @@ public class SiswaAdapter extends RecyclerView.Adapter<SiswaAdapter.ViewHolder> 
         return siswaList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
-        static TextView tvNama;
-        static TextView tvAlamat;
+    public static class ViewHolder extends RecyclerView.ViewHolder{
+        TextView tvNama;
+        TextView tvAlamat;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
