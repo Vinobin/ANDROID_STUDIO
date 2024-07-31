@@ -1,6 +1,7 @@
 package com.example.recycleviewcardview;
 
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -44,5 +45,10 @@ public class MainActivity extends AppCompatActivity {
         SiswaList.add(new Siswa("HANDOYO", "JAKSEL"));
         adapter = new SiswaAdapter(this,SiswaList);
         recyclerView.setAdapter(adapter);
+    }
+
+    public void btnNambah(View view) {
+        SiswaList.add(new Siswa("AMBATRON", "NGUWAWI"));
+        adapter.notifyDataSetChanged();
     }
 }

@@ -66,7 +66,6 @@ public class SiswaAdapter extends RecyclerView.Adapter<SiswaAdapter.ViewHolder> 
                         } else if (idItem == R.id.menu_hapus){
                             siswaList.remove(i);
                             notifyDataSetChanged();
-                            
                             Toast.makeText(context, siswa.getNama()+"sudah dihapus ya", Toast.LENGTH_SHORT).show();
                         }
 
