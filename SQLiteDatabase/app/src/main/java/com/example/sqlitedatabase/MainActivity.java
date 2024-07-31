@@ -22,5 +22,6 @@ public class MainActivity extends AppCompatActivity {
     }
     public void load(){
         db = new Database(this);
+        db.buatTabel();
     }
 }
