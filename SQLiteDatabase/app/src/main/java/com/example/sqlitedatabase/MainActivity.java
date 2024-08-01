@@ -76,7 +76,15 @@ public class MainActivity extends AppCompatActivity {
 
 
             } else {
-                pesan("MASIH UPDATE");
+               String sql = " UPDATE tblbarang\n" +
+                       "SET barang =\'"+barang+"', stok = "+stok+", harga ="+harga+"\n" +
+                       "WHERE idbarang = "+idbarang+";";
+              if(db.runSQL(sql)){
+                  pesan("UDAH DIUBAH YA");
+                  selectData();
+              }else{
+                  pesan("GABISA DIUBAH");
+              }
             }
         }
         etBarang.setText("");
