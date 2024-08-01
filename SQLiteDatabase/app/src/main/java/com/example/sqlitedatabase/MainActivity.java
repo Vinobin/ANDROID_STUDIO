@@ -1,5 +1,6 @@
 package com.example.sqlitedatabase;
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         load();
+        seleectData();
     }
 
     public void load() {
@@ -68,5 +70,10 @@ public class MainActivity extends AppCompatActivity {
     }
     public void pesan(String isi){
         Toast.makeText(this, isi, Toast.LENGTH_SHORT).show();
+    }
+    public void seleectData(){
+        String sql = "SELECT * FROM tblbarang ORDER BY barang ASC";
+        Cursor cursor = db.select(sql);
+        pesan(cursor.getCount()+"");
     }
 }
