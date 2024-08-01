@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     BarangAdapter adapter;
     RecyclerView rcvBarang;
 
+    String idbarang;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,11 +66,11 @@ public class MainActivity extends AppCompatActivity {
             pesan("KOSONG YA");
         } else {
             if (pilihan.equals("insert")) {
-                String sql="INSERT INTO tblbarang (barang,stok,harga) VALUES ('"+barang+"',"+stok+","+harga+")";
+                String sql = "INSERT INTO tblbarang (barang,stok,harga) VALUES ('" + barang + "'," + stok + "," + harga + ")";
                 pesan(sql);
-                if(db.runSQL(sql)){
+                if (db.runSQL(sql)) {
                     pesan("UDH DISIMPAN");
-                }else{
+                } else {
                     pesan("GABISA DISIMPAN");
                 }
 
@@ -82,37 +84,51 @@ public class MainActivity extends AppCompatActivity {
         etHarga.setText("");
         tvPilihan.setText("insert");
     }
-    public void pesan(String isi){
+
+    public void pesan(String isi) {
         Toast.makeText(this, isi, Toast.LENGTH_SHORT).show();
     }
-    public void selectData(){
+
+    public void selectData() {
         String sql = "SELECT * FROM tblbarang ORDER BY barang ASC";
         Cursor cursor = db.select(sql);
         databarang.clear();
-       if(cursor.getCount() > 0){
-           while (cursor.moveToNext()) {
-               @SuppressLint("Range") String idbarang = cursor.getString(cursor.getColumnIndex("idbarang"));
-               @SuppressLint("Range") String barang = cursor.getString(cursor.getColumnIndex("barang"));
-               @SuppressLint("Range") String stok = cursor.getString(cursor.getColumnIndex("stok"));
-               @SuppressLint("Range") String harga = cursor.getString(cursor.getColumnIndex("harga"));
-               databarang.add(new Barang(idbarang,barang,stok,harga) );
-           }
-           adapter = new BarangAdapter(this,databarang);
-           rcvBarang.setAdapter(adapter);
-           adapter.notifyDataSetChanged();
-       }else{
-           pesan("GAADA");
-       }
+        if (cursor.getCount() > 0) {
+            while (cursor.moveToNext()) {
+                @SuppressLint("Range") String idbarang = cursor.getString(cursor.getColumnIndex("idbarang"));
+                @SuppressLint("Range") String barang = cursor.getString(cursor.getColumnIndex("barang"));
+                @SuppressLint("Range") String stok = cursor.getString(cursor.getColumnIndex("stok"));
+                @SuppressLint("Range") String harga = cursor.getString(cursor.getColumnIndex("harga"));
+                databarang.add(new Barang(idbarang, barang, stok, harga));
+            }
+            adapter = new BarangAdapter(this, databarang);
+            rcvBarang.setAdapter(adapter);
+            adapter.notifyDataSetChanged();
+        } else {
+            pesan("GAADA");
+        }
     }
-    public void deleteData(String id){
-        String idbarang =id;
-        String sql = "DELETE FROM tblbarang WHERE idbarang = "+idbarang+";";
-        if(db.runSQL(sql)){
+
+    public void deleteData(String id) {
+        String idbarang = id;
+        String sql = "DELETE FROM tblbarang WHERE idbarang = " + idbarang + ";";
+        if (db.runSQL(sql)) {
             pesan("UDH DIHAPUS YA");
-           selectData();
-        }else {
+            selectData();
+        } else {
             pesan("GABISA DIHAPUS NIH");
         }
     }
 
+    @SuppressLint("Range")
+    public void selectupdate(String id) {
+        idbarang = id;
+        String sql = "SELECT * FROM tblbarang WHERE idbarang =" + id + ";";
+        Cursor cursor = db.select(sql);
+        cursor.moveToNext();
+       etBarang.setText(cursor.getString(cursor.getColumnIndex("barang")));
+       etStok.setText(cursor.getString(cursor.getColumnIndex("stok")));
+       etHarga.setText(cursor.getString(cursor.getColumnIndex("harga")));
+        tvPilihan.setText("update");
+    }
 }

@@ -52,7 +52,7 @@ public class BarangAdapter extends RecyclerView.Adapter<BarangAdapter.ViewHolder
 //                        }
                         int idItem = item.getItemId();
                         if (idItem == R.id.ubah){
-                            Toast.makeText(context, "UBAH", Toast.LENGTH_SHORT).show();
+                            ((MainActivity)context).selectupdate(barangList.get(i).getIdbarang());
                         }else if (idItem == R.id.hapus){
                             ((MainActivity)context).deleteData(barangList.get(i).getIdbarang());
                         }
@@ -83,4 +83,5 @@ public class BarangAdapter extends RecyclerView.Adapter<BarangAdapter.ViewHolder
             tvMenu = itemView.findViewById(R.id.tvMenu);
         }
     }
+
 }
