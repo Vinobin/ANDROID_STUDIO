@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         load();
-        seleectData();
+        selectData();
     }
 
     public void load() {
@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
     public void pesan(String isi){
         Toast.makeText(this, isi, Toast.LENGTH_SHORT).show();
     }
-    public void seleectData(){
+    public void selectData(){
         String sql = "SELECT * FROM tblbarang ORDER BY barang ASC";
         Cursor cursor = db.select(sql);
         databarang.clear();
@@ -104,4 +104,15 @@ public class MainActivity extends AppCompatActivity {
            pesan("GAADA");
        }
     }
+    public void deleteData(String id){
+        String idbarang =id;
+        String sql = "DELETE FROM tblbarang WHERE idbarang = "+idbarang+";";
+        if(db.runSQL(sql)){
+            pesan("UDH DIHAPUS YA");
+           selectData();
+        }else {
+            pesan("GABISA DIHAPUS NIH");
+        }
+    }
+
 }
